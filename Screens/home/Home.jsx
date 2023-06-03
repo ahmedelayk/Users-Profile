@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import Search from './Search';
 import Users from './Users';
 
@@ -24,13 +24,17 @@ const Home = ({navigation}) => {
     }
 
     return (
-        <View>
+        <View style={styles.main}>
             <Search getSearchWord = {getSearchWord}/>
             <Users filterdUsers = {filterdUsers} handleClickDetails={handleClickDetails}/>
         </View>
     );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    main: {
+        // backgroundColor: '#3C486B'
+    }
+})
 
 export default Home;

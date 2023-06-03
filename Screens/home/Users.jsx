@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {FlatList, StyleSheet, SafeAreaView, Text, View, Pressable} from 'react-native';
+import {FlatList, StyleSheet, SafeAreaView, Text, View, Pressable, Dimensions} from 'react-native';
 
 const Users = ({filterdUsers, handleClickDetails}) => {
     
@@ -14,7 +14,7 @@ const Users = ({filterdUsers, handleClickDetails}) => {
             data={filterdUsers}
             renderItem={({item}) => 
                 <View style={styles.userContainer}>
-                    <Text>{item.name}</Text>
+                    <Text style={styles.name}>{item.name}</Text>
                     <Pressable onPress={()=>{ handleClickDetails(item) }} style={styles.detailsBtn}>
                         <Text style={styles.detailsBtnText}>Details</Text>
                     </Pressable>
@@ -27,21 +27,33 @@ const Users = ({filterdUsers, handleClickDetails}) => {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        height: Dimensions.get('window').height,
+
+    },
     userContainer: {
-        backgroundColor:"#DDD",
+        backgroundColor:"#FFF",
         display: 'flex',
         flexDirection:'row',
         justifyContent:"space-between",
-        padding: 8,
-
+        alignItems: 'center',
+        paddingVertical: 8,
+        paddingHorizontal:12,
+        margin: 5,
+        borderRadius: 5
+    },
+    name: {
+        color: "#3187f9",
+        fontSize: 20
     },
     detailsBtn: {
-        backgroundColor: "#9988FF",
-        padding: 2,
+        backgroundColor: "#3187f9",
+        padding: 5,
         borderRadius: 4
     },
     detailsBtnText: {
-        color: "#FEFEFE"
+        color: "#FFF",
+        fontSize: 15
     }
 })
 

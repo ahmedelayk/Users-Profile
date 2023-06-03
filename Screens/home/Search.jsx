@@ -10,21 +10,22 @@ const Search = ({getSearchWord}) => {
     }
     return (
         <View>
-            <TextInput style={styles.searchInput} value={searchText} onChangeText={handleChangeText}></TextInput>
+            <TextInput style={styles.searchInput} value={searchText} onChangeText={handleChangeText} placeholder='Search by name'></TextInput>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     searchInput: {
-        backgroundColor: "#DDD",
-        padding: 20,
-        color:"crimson",
-        fontSize:28,
+        backgroundColor: 'white',
+        padding: 8,
+        color:"#3187f9",
+        fontSize:20,
         margin: 12,
-        borderRadius: 8
-
+        borderRadius: 2,
+        borderBottomColor:"#3187f9",
+        borderBottomWidth:2
     }
 })
-
+// FE5655
 export default Search;

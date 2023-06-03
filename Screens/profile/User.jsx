@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import {View, StyleSheet, Text, Image} from 'react-native';
+import {View, StyleSheet, Text, Image, Dimensions} from 'react-native';
 
 const usersImages = [
     require('../../assets/images/user-male-1.jpg'),
@@ -19,21 +19,44 @@ const User = ({route}) => {
     const [user, setuser] = useState(route.params.user);
     console.warn(route.params)
     return (
-        <View>
-            <Image style={styles.image} source={usersImages[user.id-1]} />
-            <Text>{user.name}</Text>
-            <Text>{user.email}</Text>
-            <Text>{user.phone}</Text>
-            <Text>{user.website}</Text>
-            <Text>{user.address.city}</Text>
+        <View style={styles.userContainer}>
+            <View style={styles.dataContainer}>
+                <Image style={styles.image} source={usersImages[user.id-1]} />
+                <Text style={styles.name}>{user.name}</Text>
+                <Text style={styles.text}>E-mail: {user.email}</Text>
+                <Text style={styles.text}>Phone: {user.phone}</Text>
+                <Text style={styles.text}>Website: {user.website}</Text>
+                <Text style={styles.text}>City: {user.address.city}</Text>
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    userContainer: {
+        height: Dimensions.get('window').height -120,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    dataContainer: {
+        backgroundColor:"#FFFFFF",
+        padding: 10,
+        borderRadius: 4
+    },
     image: {
-        width: 200,
-        height:300
+        width: Dimensions.get('window').width - 50,
+        height:400,
+        marginBottom:10
+    },
+    name: {
+        textAlign: 'center',
+        fontSize: 25,
+        color: "#3187f9"
+
+    },
+    text: {
+        fontSize: 20
     }
 })
 
